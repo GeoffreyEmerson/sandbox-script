@@ -8,10 +8,11 @@ This is a bash script to quickly make a sandbox for testing HTML, CSS, or JavaSc
 2. Navigate in the terminal to where you saved the script. E.g. `cd ~/.bin`
 3. Make the script executable with this command: `chmod 711 sb`
 4. Add the directory to your executable path. You'll have to dig into your .bash_profile and add this line: `export PATH=$PATH:/Users/<your user name>/.bin` or wherever you saved the script.
-5. Finally, open the script in a text editor and look at the comments so that you can customize where your sandboxes show up when called.
 
 ### Usage
 
 $ `sb mySandboxName`
+
+This script will make your sandbox directory in the current working directory.
 
 ##### Feedback welcome.
