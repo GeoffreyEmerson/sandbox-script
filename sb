@@ -2,14 +2,17 @@
 
 # Automatic sandbox generator
 
+# Check for a sandbox name.
 if [ "$1" != "" ]; then
 
+  # Check to make sure it's not a duplicate of an existing directory.
   if [ ! -d "./$1" ]; then
 
-    # Customize these two lines to where you want the sandboxes to appear by default
+    # Make the new directory and navigate into it.
     mkdir -p ./$1
     cd ./$1
 
+    # Make the HTML file.
     printf '<!DOCTYPE html>\n' > index.html
     printf '<html>\n' >> index.html
     printf '  <head>\n' >> index.html
@@ -24,8 +27,10 @@ if [ "$1" != "" ]; then
     printf '  </body>\n' >> index.html
     printf '</html>\n' >> index.html
 
+    # Make the CSS file.
     printf '/* Sandbox for %s */\n' $1 > base.css
 
+    # Make the JS file.
     printf '// Sandbox for %s\n' $1 > script.js
     printf '$(document).ready(function() {\n' >> script.js
     printf '  \n' >> script.js
@@ -35,11 +40,15 @@ if [ "$1" != "" ]; then
     mkdir ~/.logs 2>/dev/null
     live-server >> ~/.logs/live-server.log 2>&1 &
 
-    atom -n index.html base.css script.js
+    # Opens a new window in Atom with the three sandbox files open as tabs.
+    atom -n script.js base.css index.html
+
   else
+    ## Abort if the name was already used.
     echo "Error: That sandbox already exists."
   fi
 
 else
+  # Abort if no name was given.
   echo "Error: Name of sandbox is required."
 fi
