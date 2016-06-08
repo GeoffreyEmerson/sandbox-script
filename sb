@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Automatic sandbox generator
+
+if [ "$1" != "" ]; then
+
+# Customize these two lines to where you want the sandboxes to appear in your directory
+mkdir -p ~/Projects/code-fellows/301/various-classwork/$1
+cd ~/Projects/code-fellows/301/various-classwork/$1
+
+printf '<!DOCTYPE html>\n' > index.html
+printf '<html>\n' >> index.html
+printf '  <head>\n' >> index.html
+printf '    <meta charset="utf-8">\n' >> index.html
+printf '    <title>%s</title>\n' $1 >> index.html
+printf '    <link rel="stylesheet" href="base.css">\n' >> index.html
+printf '    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>' >> index.html
+printf '    <script type="text/javascript" src="script.js"></script>\n' >> index.html
+printf '  </head>\n' >> index.html
+printf '  <body>\n' >> index.html
+printf '    <h1>%s</h1>\n' $1 >> index.html
+printf '  </body>\n' >> index.html
+printf '</html>\n' >> index.html
+
+printf '/* Sandbox for %s */\n' $1 > base.css
+
+printf '// Sandbox for %s\n' $1 > script.js
+printf '$(document).ready(function() {\n' >> script.js
+printf '  \n' >> script.js
+printf '});\n' >> script.js
+
+# This section will redirect all output from the live-server to a log file in ~/.logs
+mkdir ~/.logs 2>/dev/null
+live-server > ~/.logs/live-server.log 2>&1 &
+
+atom -n index.html base.css script.js
+
+else
+echo "Error: Name of sandbox is required."
+fi
