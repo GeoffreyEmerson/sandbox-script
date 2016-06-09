@@ -19,7 +19,7 @@ if [ "$1" != "" ]; then
     printf '    <meta charset="utf-8">\n' >> index.html
     printf '    <title>%s</title>\n' $1 >> index.html
     printf '    <link rel="stylesheet" href="base.css">\n' >> index.html
-    printf '    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>' >> index.html
+    printf '    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>\n' >> index.html
     printf '    <script type="text/javascript" src="script.js"></script>\n' >> index.html
     printf '  </head>\n' >> index.html
     printf '  <body>\n' >> index.html
