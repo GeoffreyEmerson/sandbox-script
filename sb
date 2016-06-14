@@ -32,7 +32,7 @@ if [ "$1" != "" ]; then
 
     # Make the JS file.
     printf '// Sandbox for %s\n' $1 > script.js
-    printf '$(document).ready(function() {\n' >> script.js
+    printf '$(function() {\n' >> script.js
     printf '  \n' >> script.js
     printf '});\n' >> script.js
 
